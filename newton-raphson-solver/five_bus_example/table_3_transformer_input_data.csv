@@ -1,0 +1,3 @@
+Bus to-- Bus,R (per unit),X (per unit),$G_c$ (per unit),$B_m$ (per unit),Maximum MVA (per unit),TAP Setting (per unit)
+1-5,0.00150,0.02,0,0,6.0,
+3-4,0.00075,0.01,0,0,10.0,

@@ -1,0 +1,92 @@
+
+Bus Data:
+Bus     Type    P_G     Q_G     P_L     Q_L     V_spec  Theta_spec
+1       0       0.0     0.0     0.0     0.0     1.0     0.0
+2       2       0.0     0.0     8.0     2.8     0.0     0.0
+3       1       5.2     0.0     0.8     0.4     1.05    0.0
+4       2       0.0     0.0     0.0     0.0     0.0     0.0
+5       2       0.0     0.0     0.0     0.0     0.0     0.0
+
+Line Data:
+From    To      R       X       B/2     Type
+1       5       0.0015  0.02    0.0     transformer
+3       4       0.00075 0.01    0.0     transformer
+2       4       0.009   0.1     0.86    line
+2       5       0.0045  0.05    0.44    line
+4       5       0.00225 0.025   0.22    line
+
+System Base MVA: 100
+
+Bus Limits:
+Bus 3: Q_min = -2.8 pu, Q_max = 4.0 pu
+
+
+Running power flow with data from 'five_bus_example/' folder...
+Y-bus Matrix:
+           0          1           2             3             4
+0  0.0-50.0j  0.0+ 0.0j  0.0+  0.0j  0.00+  0.00j  0.00+ 50.00j
+1  0.0+ 0.0j  0.0-28.7j  0.0+  0.0j  0.00+ 10.00j  0.00+ 20.00j
+2  0.0+ 0.0j  0.0+ 0.0j  0.0-100.0j  0.00+100.00j  0.00+  0.00j
+3  0.0+ 0.0j  0.0+10.0j  0.0+100.0j  0.00-148.92j  0.00+ 40.00j
+4  0.0+50.0j  0.0+20.0j  0.0+  0.0j  0.00+ 40.00j  0.00-109.34j
+Initial Voltages and Power Injections:
+            V    P    Q
+0  1.00+0.00j  0.0  0.0
+1  1.00+0.00j -8.0 -2.8
+2  1.05+0.00j  4.4 -0.4
+3  1.00+0.00j  0.0  0.0
+4  1.00+0.00j  0.0  0.0
+Iteration 0:
+ Current mismatch f(x) : [-440.  800.    0.    0.  150. -608.  -66.] MVA
+  ||f(x)||: 8.000000 pu (800.000000 MVA)
+  Bus voltages:
+    Bus 1 (Slack): 1.000000 pu ∠ 0.000°
+    Bus 2 (PQ): 1.000000 pu ∠ 0.000°
+    Bus 3 (PV): 1.050000 pu ∠ 0.000°
+    Bus 4 (PQ): 1.000000 pu ∠ 0.000°
+    Bus 5 (PQ): 1.000000 pu ∠ 0.000°
+Iteration 1:
+ Current mismatch f(x) : [ 20.124447   6.872302  -8.658211 -24.691102 110.675765  84.894937
+  81.284623] MVA
+  ||f(x)||: 1.106758 pu (110.675765 MVA)
+  Bus voltages:
+    Bus 1 (Slack): 1.000000 pu ∠ 0.000°
+    Bus 2 (PQ): 0.975582 pu ∠ -18.695°
+    Bus 3 (PV): 1.050000 pu ∠ 0.404°
+    Bus 4 (PQ): 1.046043 pu ∠ -1.997°
+    Bus 5 (PQ): 1.018526 pu ∠ -4.125°
+Iteration 2:
+ Current mismatch f(x) : [ 0.21328   8.346548 -2.555704 -5.879878 10.873779  1.216189  1.903856] MVA
+  ||f(x)||: 0.108738 pu (10.873779 MVA)
+  Bus voltages:
+    Bus 1 (Slack): 1.000000 pu ∠ 0.000°
+    Bus 2 (PQ): 0.895946 pu ∠ -20.571°
+    Bus 3 (PV): 1.050000 pu ∠ 0.229°
+    Bus 4 (PQ): 1.027102 pu ∠ -2.110°
+    Bus 5 (PQ): 0.988972 pu ∠ -4.174°
+Iteration 3:
+ Current mismatch f(x) : [-0.000817  0.270204 -0.088709 -0.177107  0.2173    0.001389  0.010107] MVA
+  ||f(x)||: 0.002702 pu (0.270204 MVA)
+  Bus voltages:
+    Bus 1 (Slack): 1.000000 pu ∠ 0.000°
+    Bus 2 (PQ): 0.885677 pu ∠ -21.015°
+    Bus 3 (PV): 1.050000 pu ∠ 0.221°
+    Bus 4 (PQ): 1.025432 pu ∠ -2.121°
+    Bus 5 (PQ): 0.986028 pu ∠ -4.187°
+Iteration 4:
+ Current mismatch f(x) : [-1.00e-06  1.76e-04 -5.90e-05 -1.15e-04  1.24e-04  3.00e-06  9.00e-06] MVA
+  ||f(x)||: 0.000002 pu (0.000176 MVA)
+  Bus voltages:
+    Bus 1 (Slack): 1.000000 pu ∠ 0.000°
+    Bus 2 (PQ): 0.885441 pu ∠ -21.028°
+    Bus 3 (PV): 1.050000 pu ∠ 0.221°
+    Bus 4 (PQ): 1.025395 pu ∠ -2.121°
+    Bus 5 (PQ): 0.985962 pu ∠ -4.188°
+
+Converged in 4 iterations!
+Final ||f(x)|| = 0.00000176 pu
+
+Final Results:
+  Bus 1 (Slack) reactive power: 0.8335 pu (83.4 MVAr)
+  Bus 1 (Slack) real power: 3.6000 pu (360.0 MW)
+  Bus 3 (PV) reactive power: 3.0735 pu (307.3 MVAr)

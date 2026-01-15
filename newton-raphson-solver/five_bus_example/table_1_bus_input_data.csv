@@ -1,0 +1,6 @@
+Bus,Type,V (per unit),δ (degrees),$P_G$ (per unit),$Q_G$ (per unit),$P_L$ (per unit),$Q_L$ (per unit),$Q_{Gmax}$ (per unit),$Q_{Gmin}$ (per unit)
+1,Swing,1.0,0,,,0,0,,
+2,Load,,,,0,0,8.0,2.8,,
+3,Constant voltage,1.05,,5.2,,0.8,0.4,4.0,-2.8
+4,Load,,,,0,0,0,0,,
+5,Load,,,,0,0,0,0,,
