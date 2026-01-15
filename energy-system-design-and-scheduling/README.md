@@ -10,6 +10,10 @@ In addition, I set up a multi-objective optimization problem using the Epsilon c
 
 ## Visualizations
 
+### Microgrid System Diagram
+
+![System Diagram](system_diagram.png)
+
 ### Pareto Frontier Analysis
 
 ![Pareto Frontier](pareto_frontier.png)
