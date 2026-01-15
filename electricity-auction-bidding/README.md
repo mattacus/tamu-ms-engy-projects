@@ -9,3 +9,9 @@ Description:
 1.  MA-energy-module-Puller-question-2025: Project prompt and overview
 2.  profit-maximizing-bid-function: Notebook to develop the bidding strategy and calculate the bid function curve
 3.  report.pdf: Project summary writeup with charts and tables
+
+## Visualization
+
+### Profit-Maximizing Bid Curve
+
+![Bid Curve](bid_curve.png)

@@ -7,3 +7,10 @@ A collection of data science notebooks for the ENGY 642 class.
 Description:
 
 1.  Final_Project_Track_2_energy_anomaly_detection: A project to explore the detection of energy reading anomalies using an autoencoder neural network, and accelerated using NVIDIA's cuDF and cuML libraries.
+
+## Visualization
+
+### Anomaly Detection Results
+
+![alt text](image.png)
+![alt text](image-1.png)

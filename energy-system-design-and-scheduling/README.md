@@ -7,3 +7,13 @@ My main contribution was formulating the mathematical MILP models for Part A and
 I used Gemini and Claude to help with formulating the MILP and generating the corresponding python code, respectively.
 
 In addition, I set up a multi-objective optimization problem using the Epsilon constraint method to do Pareto frontier analysis.
+
+## Visualizations
+
+### Pareto Frontier Analysis
+
+![Pareto Frontier](pareto_frontier.png)
+
+### Dispatch Schedule
+
+![Dispatch Schedule](dispatch_schedule.png)
