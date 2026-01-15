@@ -1,0 +1,9 @@
+Bus,,,,,,,,,,,,,,,,,
+Number,AreaName,SubNumber,Name,NomkV,Vpu,kV,Vangle,LoadMW,LoadMvar,GenMW,GenMvar,ShuntMvar,ActG,ActB,AreaNumber,ZoneName,ZoneNumber
+1110,Far West,2000,NewLoad1100-500kV,500,1,500,-35.44,,,,,,0,0,1,Far West Texas,9
+1111,Far West,2001,NewLoad1101-500kV,500,1,500,-35.43,,,,,,0,0,1,Far West Texas,9
+1112,Far West,2002,NewLoad1102-500kV,500,1,500,-35.43,,,,,,0,0,1,Far West Texas,9
+3210,West,2003,NewLoad3200-500kV,500,1,500,-35.44,,,,,,0,0,3,Hill Country,28
+3211,West,2004,NewLoad3201-500kV,500,1,500,-35.44,,,,,,0,0,3,Hill Country,28
+3333,West,158,CRISTOVAL-500kV,500,1,500,-35.43,,,,,,0,0,3,Abilene,27
+3334,West,177,DEL RIO-500kV,500,1,500,-35.44,,,,,,0,0,3,Hill Country,28

@@ -1,0 +1,29 @@
+Branch,,,,,,,,,,,,,,,,
+PercentMVA,AreaNameFrom,AreaNameTo,BusNumFrom,BusNameFrom,BusNumTo,BusNameTo,Circuit,Status,BranchDeviceType,IsXF,R,X,B,LimitMVAA,LimitMVAB,LimitMVAC
+50.5,Far West,Far West,1079,ODESSA 1 8,1111,NewLoad1101-500kV,3,Closed,Line,NO,0,0.0002,0,1600,0,0
+50.5,Far West,Far West,1079,ODESSA 1 8,1111,NewLoad1101-500kV,2,Closed,Line,NO,0,0.0002,0,1600,0,0
+50.5,Far West,Far West,1079,ODESSA 1 8,1111,NewLoad1101-500kV,1,Closed,Line,NO,0,0.0002,0,1600,0,0
+62.2,Far West,Far West,1079,ODESSA 1 8,1101,NewLoad1101,1,Closed,Line,NO,0,0.0002,0,1600,0,0
+45.5,Far West,Far West,1100,NewLoad1100,1110,NewLoad1100-500kV,2,Closed,Transformer,YES,0,0.015,0,1100,0,0
+45.5,Far West,Far West,1100,NewLoad1100,1110,NewLoad1100-500kV,1,Closed,Transformer,YES,0,0.015,0,1100,0,0
+0.2,Far West,Far West,1101,NewLoad1101,1111,NewLoad1101-500kV,1,Closed,Transformer,YES,0,0.015,0,1100,0,0
+0.2,Far West,Far West,1101,NewLoad1101,1111,NewLoad1101-500kV,2,Closed,Transformer,YES,0,0.015,0,1100,0,0
+45.5,Far West,Far West,1102,NewLoad1102,1112,NewLoad1102-500kV,1,Closed,Transformer,YES,0,0.015,0,1100,0,0
+45.5,Far West,Far West,1102,NewLoad1102,1112,NewLoad1102-500kV,2,Closed,Transformer,YES,0,0.015,0,1100,0,0
+88.8,Far West,Far West,1110,NewLoad1100-500kV,1111,NewLoad1101-500kV,1,Closed,Line,NO,0,1.00E-05,0,1600,0,0
+31.3,Far West,Far West,1111,NewLoad1101-500kV,1112,NewLoad1102-500kV,1,Closed,Line,NO,0,1.00E-05,0,1600,0,0
+31.3,Far West,Far West,1112,NewLoad1102-500kV,1111,NewLoad1101-500kV,2,Closed,Line,NO,0,1.00E-05,0,1600,0,0
+45.5,West,West,3200,NewLoad3200,3210,NewLoad3200-500kV,1,Closed,Transformer,YES,0,0.015,0,1100,0,0
+45.5,West,West,3200,NewLoad3200,3210,NewLoad3200-500kV,2,Closed,Transformer,YES,0,0.015,0,1100,0,0
+45.5,West,West,3201,NewLoad3201,3211,NewLoad3201-500kV,1,Closed,Transformer,YES,0,0.015,0,1100,0,0
+45.5,West,West,3201,NewLoad3201,3211,NewLoad3201-500kV,2,Closed,Transformer,YES,0,0.015,0,1100,0,0
+37.5,West,Far West,3210,NewLoad3200-500kV,1110,NewLoad1100-500kV,1,Closed,Line,NO,0,1.00E-05,0,1600,0,0
+23.8,West,West,3210,NewLoad3200-500kV,3211,NewLoad3201-500kV,1,Closed,Line,NO,0,1.00E-05,0,1600,0,0
+48.8,West,West,3210,NewLoad3200-500kV,3333,CRISTOVAL-500kV,1,Closed,Line,NO,0,1.00E-05,0,1600,0,0
+20.6,West,West,3211,NewLoad3201-500kV,3334,DEL RIO-500kV,2,Closed,Line,NO,0,0.00001,0,1600,0,0
+38.7,West,West,3211,NewLoad3201-500kV,3334,DEL RIO-500kV,1,Closed,Line,NO,0,1.00E-05,0,1600,0,0
+43.6,West,West,3333,CRISTOVAL-500kV,3018,CHRISTOVAL 0,2,Closed,Transformer,YES,0,0.015,0,1100,0,0
+11.2,West,Far West,3333,CRISTOVAL-500kV,1110,NewLoad1100-500kV,1,Closed,Line,NO,0,1.00E-05,0,1600,0,0
+43.6,West,West,3333,CRISTOVAL-500kV,3018,CHRISTOVAL 0,1,Closed,Transformer,YES,0,0.015,0,1100,0,0
+28.2,West,West,3334,DEL RIO-500kV,3050,DEL RIO 0,1,Closed,Transformer,YES,0,0.015,0,1100,0,0
+28.2,West,West,3334,DEL RIO-500kV,3050,DEL RIO 0,2,Closed,Transformer,YES,0,0.015,0,1100,0,0
