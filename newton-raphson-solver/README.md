@@ -1,4 +1,4 @@
-# newton-raphson-solver
+# Python Newton-Raphson Power Flow Solver
 
 A simple newton-raphson power flow solver, implemented in python. Assumes zero conductance and uses LU decomposition to do matrix inverse operations
 
