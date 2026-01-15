@@ -1,0 +1,267 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs} % For better table lines
+\usepackage{caption}  % For table captions
+\usepackage{float}    % Add this package for [H] placement
+\usepackage{siunitx}  % For formatting units and numbers
+\usepackage{enumitem} % For custom list formatting
+
+\begin{document}
+
+\title{ENGY 604 Project - Multi-Period MILP Formulation (Part B - Scheduling)}
+\author{Team 3}
+\date{}
+\maketitle
+
+\section*{1. Sets}
+\begin{itemize}
+    \item $T$: Set of Time Periods, $t \in \{1, 2, \ldots, 24\}$ (hourly periods in a day)
+    \item $R$: Set of Primary Resources, $r \in \{\text{Natural Gas, Biomass, Grid Electricity}\}$
+    \item $G$: Set of Generators, $g \in \{\text{Biomass ST, NatGas CHP, Solar PV, Wind Farm}\}$
+    \item $D$: Set of Conversion Devices, $d \in \{\text{Refrigerator, LED, Heater}\}$
+\end{itemize}
+
+\section*{2. Parameters (Base)}
+
+\subsection*{General Parameters}
+\begin{itemize}
+    \item $H_{\text{day}}$: Operating horizon (1 day = 24 hours)
+    \item $\Delta t$: Duration of each time period (1 hour)
+\end{itemize}
+
+\subsection*{Resource Parameters}
+\begin{itemize}
+    \item $\text{Price}_r$: Price of resource $r$ (\$/GJ) - converted to \$/kWh in Appendix B
+\end{itemize}
+
+\subsection*{Generator Parameters}
+\begin{itemize}
+    \item $\text{capex}_g$: Capital cost for generator $g$ (\$/kW) - \textit{assumed to be sunk cost}
+    \item $\text{opex}_g$: Operational cost for generator $g$ (\$/kW-year) - converted to \$/kWh in Appendix B
+    \item $\eta_g^{\text{elec}}$: Electrical efficiency of generator $g$ (as fraction)
+    \item $\eta_g^{\text{heat}}$: Heating efficiency of generator $g$ (as fraction)
+    \item $C_g^{\text{min}}$: Minimum capacity of generator $g$ (kW)
+    \item $C_g^{\text{max}}$: Maximum capacity of generator $g$ (kW)
+    \item $C_g^{\text{installed}}$: Installed (fixed) capacity of generator $g$ (kW) - \textit{pre-determined}
+\end{itemize}
+
+\subsection*{Conversion Devices Parameters}
+\begin{itemize}
+    \item $\eta_d$: Efficiency of conversion device $d$ (as fraction, or COP)
+    \item $\text{Demand}_{d,t}$: Demand for conversion device $d$ at time $t$ (kW)
+          \begin{itemize}
+              \item $\text{Demand}_{\text{refrig},t} = 1000$ kW (constant for all $t$)
+              \item $\text{Demand}_{\text{led},t}$: Time-varying (see Table~\ref{tab:lighting_demand})
+              \item $\text{Demand}_{\text{heater},t} = 100$ kW (constant for all $t$)
+          \end{itemize}
+\end{itemize}
+
+\section*{3. Parameters (Intermediate)}
+
+\subsection*{Total Electrical Demand at Time $t$ (kW)}
+This is the total power required by the electricity-driven conversion devices at each time period.
+\begin{align*}
+    \text{ElecDemand}_t & = \frac{\text{Demand}_{\text{refrig},t}}{\eta_{\text{refrig}}} + \frac{\text{Demand}_{\text{led},t}}{\eta_{\text{led}}} \quad \forall t \in T
+\end{align*}
+
+\subsection*{Total Heat Demand at Time $t$ (kW)}
+This is the total heat required by the heat-driven conversion devices at each time period.
+\begin{align*}
+    \text{HeatDemand}_t & = \frac{\text{Demand}_{\text{heater},t}}{\eta_{\text{heater}}} \quad \forall t \in T
+\end{align*}
+
+\newpage
+
+\section*{4. Mathematical Problem Formulation}
+
+\subsection*{4.1 Decision Variables}
+\begin{description}[style=multiline, leftmargin=3cm, font=\normalfont]
+    \item[$P_{g,t}^{\text{elec}} $]: Continuous variable for the actual electric power produced by generator $g$ at time $t$ (kW).
+    \item[$P_{r,t}^{\text{cons}} $]: Continuous variable for the amount of primary resource $r$ consumed at time $t$, in equivalent units of power (kW).
+\end{description}
+
+\subsection*{4.2 Objective Function}
+\begin{description}[style=multiline, leftmargin=3cm, font=\normalfont]
+    \item[Objective:] Minimize Total Daily Operating Cost ($Z_{\text{COST}}$)
+          \begin{equation*}
+              \min Z_{\text{COST}} = \underbrace{\sum_{t \in T} \sum_{g \in G} \left(P_{g,t}^{\text{elec}} \cdot \Delta t \cdot \text{opex}_g\right)}_{\text{Generator Operating Cost}} + \underbrace{\sum_{t \in T} \sum_{r \in R} \left(P_{r,t}^{\text{cons}} \cdot \Delta t \cdot \text{Price}_r\right)}_{\text{Resource (Fuel) Cost}}
+          \end{equation*}
+
+          \noindent where $\Delta t = 1$ hour for each time period.
+\end{description}
+
+\subsection*{4.3 Constraints}
+\smallskip
+\noindent \textbf{Note:} The installed capacity $C_g^{\text{installed}}$ for each generator is assumed to be pre-determined (a fixed parameter). Wind and solar have no resource costs.
+
+\begin{description}[style=multiline, leftmargin=3cm, font=\normalfont]
+    \item[C1:] Electricity Balance (for each time period)
+          \begin{equation*}
+              \sum_{g \in G} P_{g,t}^{\text{elec}} + P_{\text{Grid},t}^{\text{cons}} = \text{ElecDemand}_t \quad \forall t \in T
+          \end{equation*}
+
+    \item[C2:] Heat Balance (for each time period)
+          \begin{equation*}
+              P_{\text{CHP},t}^{\text{elec}} \cdot \frac{\eta_{\text{CHP}}^{\text{heat}}}{\eta_{\text{CHP}}^{\text{elec}}} = \text{HeatDemand}_t \quad \forall t \in T
+          \end{equation*}
+          \noindent where $P_{\text{CHP},t}^{\text{heat}} = P_{\text{CHP},t}^{\text{elec}} \cdot \frac{\eta_{\text{CHP}}^{\text{heat}}}{\eta_{\text{CHP}}^{\text{elec}}}$
+
+    \item[C3:] Fuel Balance - Biomass (for each time period)
+          \begin{equation*}
+              P_{\text{BioST},t}^{\text{elec}} = P_{\text{Biomass},t}^{\text{cons}} \cdot \eta_{\text{BioST}}^{\text{elec}} \quad \forall t \in T
+          \end{equation*}
+
+    \item[C4:] Fuel Balance - Natural Gas (for each time period)
+          \begin{equation*}
+              P_{\text{CHP},t}^{\text{elec}} = P_{\text{NatGas},t}^{\text{cons}} \cdot \eta_{\text{CHP}}^{\text{elec}} \quad \forall t \in T
+          \end{equation*}
+
+    \item[C5:] Generation Output Limit (for each time period)
+          \begin{equation*}
+              P_{g,t}^{\text{elec}} \le C_g^{\text{installed}} \quad \forall g \in G, \forall t \in T
+          \end{equation*}
+
+    \item[C6:] Non-Negativity
+          \begin{align*}
+              P_{g,t}^{\text{elec}}, P_{r,t}^{\text{cons}} & \ge 0 \quad \forall g \in G, \forall r \in R, \forall t \in T
+          \end{align*}
+\end{description}
+
+\newpage
+\appendix
+\section*{Appendix A: Parameter Value Tables}
+
+\begin{table}[H]
+    \centering
+    \caption{Time-varying lighting demand for each hour of the day}
+    \label{tab:lighting_demand}
+    \begin{tabular}{@{}cc|cc@{}}
+        \toprule
+        Time Period & Lighting Demand [kW] & Time Period & Lighting Demand [kW] \\ \midrule
+        1           & 91                   & 13          & 159                  \\
+        2           & 88                   & 14          & 163                  \\
+        3           & 87                   & 15          & 165                  \\
+        4           & 88                   & 16          & 166                  \\
+        5           & 92                   & 17          & 168                  \\
+        6           & 101                  & 18          & 176                  \\
+        7           & 112                  & 19          & 183                  \\
+        8           & 123                  & 20          & 180                  \\
+        9           & 132                  & 21          & 172                  \\
+        10          & 141                  & 22          & 165                  \\
+        11          & 150                  & 23          & 156                  \\
+        12          & 155                  & 24          & 147                  \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Technical and economic parameters of on-site energy conversion technologies}
+    \label{tab:table1}
+    \begin{tabular}{@{}lccc@{}}
+        \toprule
+        Sources         & Refrigerator  & LED         & Heater        \\ \midrule
+        Input Resource  & Electricity   & Electricity & Heat          \\
+        Output Resource & Refrigeration & Lighting    & Space Heating \\
+        $\eta_d$ [\%]   & 300 (COP)     & 80          & 85            \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Technical and economic parameters of energy generation technologies}
+    \label{tab:table2}
+    \begin{tabular}{@{}lcccc@{}}
+        \toprule
+        Processes                     & BioST             & CHP                 & PV          & Wind        \\ \midrule
+        Input Resource                & Biomass           & Natural Gas         & Solar       & Wind        \\
+        Output Resource               & Electricity       & Electricity \& Heat & Electricity & Electricity \\
+        $\eta_g^{\text{elec}}$ [\%]   & 68                & 44                  & 9           & 22          \\
+        $\eta_g^{\text{heat}}$ [\%]   & 0                 & 28                  & 0           & 0           \\
+        $C_g^{\text{min}}$ [kW]       & 100               & 800                 & 10          & 10          \\
+        $C_g^{\text{max}}$ [kW]       & $1 \times 10^{6}$ & $1 \times 10^{6}$   & 300         & 500         \\
+        $C_g^{\text{installed}}$ [kW] & TBD               & TBD                 & TBD         & TBD         \\
+        $\text{capex}_g$ [\$/kW]      & 250               & 500                 & 2000        & 2000        \\
+        $\text{opex}_g$ [\$/kW-year]  & 15                & 15                  & 500         & 1200        \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Prices of the primary energy resources and grid electricity}
+    \label{tab:table3}
+    \begin{tabular}{@{}lccc@{}}
+        \toprule
+        Sources                  & Natural Gas & Biomass & Grid Electricity \\ \midrule
+        $\text{Price}_r$ [\$/GJ] & 8.89        & 9.72    & 36.11            \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \caption{Energy demands for various utilities (constant demands)}
+    \label{tab:table4}
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        Uses                   & Refrigeration & Space Heating \\ \midrule
+        $\text{Demand}_d$ [kW] & 1000          & 100           \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+\newpage
+\section*{Appendix B: Sample Intermediate Parameter Calculations}
+
+\noindent These are sample calculations for selected time periods to illustrate the intermediate parameters.
+
+\subsection*{Resource Price Conversions (\$/GJ to \$/kWh)}
+Converting from \$/GJ to \$/kWh using the conversion factor $1 \text{ GJ} = 277.78 \text{ kWh}$ (or equivalently, divide by 3600 since 1 kWh = 3.6 MJ):
+\begin{align*}
+    \text{Price}_{\text{natgas}}  & = \frac{8.89 \text{ \$/GJ}}{277.78 \text{ kWh/GJ}} = 0.00247 \text{ \$/kWh}  \\
+    \text{Price}_{\text{biomass}} & = \frac{9.72 \text{ \$/GJ}}{277.78 \text{ kWh/GJ}} = 0.00270 \text{ \$/kWh}  \\
+    \text{Price}_{\text{grid}}    & = \frac{36.11 \text{ \$/GJ}}{277.78 \text{ kWh/GJ}} = 0.01003 \text{ \$/kWh}
+\end{align*}
+
+\subsection*{Generator OPEX Conversions (\$/kW-year to \$/kWh)}
+Converting from \$/kW-year to \$/kWh by dividing by 8760 hours/year:
+\begin{align*}
+    \text{opex}_{\text{BioST}} & = \frac{15 \text{ \$/kW-year}}{8760 \text{ hours/year}} = 0.00171 \text{ \$/kWh}   \\
+    \text{opex}_{\text{CHP}}   & = \frac{15 \text{ \$/kW-year}}{8760 \text{ hours/year}} = 0.00171 \text{ \$/kWh}   \\
+    \text{opex}_{\text{PV}}    & = \frac{500 \text{ \$/kW-year}}{8760 \text{ hours/year}} = 0.05707 \text{ \$/kWh}  \\
+    \text{opex}_{\text{Wind}}  & = \frac{1200 \text{ \$/kW-year}}{8760 \text{ hours/year}} = 0.13699 \text{ \$/kWh}
+\end{align*}
+
+\subsection*{Total Electrical Demand (kW) - Sample Calculations}
+For $t=1$ (Time Period 1):
+\begin{align*}
+    \text{ElecDemand}_1 & = \frac{\text{Demand}_{\text{refrig},1}}{\eta_{\text{refrig}}} + \frac{\text{Demand}_{\text{led},1}}{\eta_{\text{led}}} \\
+                        & = \frac{1000 \text{ kW}}{3.0} + \frac{91 \text{ kW}}{0.80}                                                              \\
+                        & = 333.33 \text{ kW} + 113.75 \text{ kW}                                                                                 \\
+                        & = 447.08 \text{ kW}
+\end{align*}
+
+For $t=19$ (Time Period 19 - Peak Lighting):
+\begin{align*}
+    \text{ElecDemand}_{19} & = \frac{1000 \text{ kW}}{3.0} + \frac{183 \text{ kW}}{0.80} \\
+                           & = 333.33 \text{ kW} + 228.75 \text{ kW}                     \\
+                           & = 562.08 \text{ kW}
+\end{align*}
+
+\subsection*{Total Heat Demand (kW)}
+This remains constant for all time periods:
+\begin{align*}
+    \text{HeatDemand}_t & = \frac{\text{Demand}_{\text{heater},t}}{\eta_{\text{heater}}} \\
+                        & = \frac{100 \text{ kW}}{0.85}                                  \\
+                        & = 117.65 \text{ kW} \quad \forall t \in T
+\end{align*}
+
+\subsection*{Key Notes for Multi-Period Model}
+\begin{itemize}
+    \item The installed capacity $C_g^{\text{installed}}$ must be specified before solving the scheduling problem. This represents the generation capacity already built and available for dispatch.
+    \item Capital costs (CAPEX) are not included in the objective function as they are considered sunk costs.
+    \item The model determines the optimal hourly dispatch of generation resources to meet time-varying demands at minimum operating cost.
+    \item Lighting demand varies from 87 kW (minimum at $t=3$) to 183 kW (maximum at $t=19$).
+    \item Total electrical demand varies from approximately 442 kW to 562 kW across the 24-hour period.
+\end{itemize}
+
+\end{document}
