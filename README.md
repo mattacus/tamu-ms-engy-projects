@@ -1,6 +1,6 @@
 # TAMU MS Energy Project Portfolio
 
-Welcome to the portfolio for my Master of Science in Energy program at Texas A&M! Over the course of the program, I have prototyped data-driven workflows, built optimization models, and delivered power system planning studies. Each section below links directly to the project artifacts, summarizing the problem tackled, the methods employed, and the skills demonstrated.
+Welcome to my portfolio page for the Master of Science in Energy degree I am completing at Texas A&M! Over the course of the program, I have prototyped data-driven workflows, built optimization models, and delivered power system planning studies. Each section below links directly to the project artifacts, summarizing the problem tackled, the methods employed, and the skills demonstrated.
 
 ## 🌟 Featured Projects at a Glance
 
