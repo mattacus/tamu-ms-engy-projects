@@ -4,7 +4,7 @@ Welcome to my portfolio page for the Master of Science in Energy degree I am com
 
 ## 🌟 Featured Projects at a Glance
 
-|                               **Grid Expansion Planning**                               |                           **Microgrid Optimization**                           |                     **Market Bidding Strategy**                     |
+|     [**Grid Expansion Planning**](texas-synthetic-west-texas-load-design-project/)      |       [**Microgrid Optimization**](energy-system-design-and-scheduling/)       |     [**Market Bidding Strategy**](electricity-auction-bidding/)     |
 | :-------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------: | :-----------------------------------------------------------------: |
 | <img src="texas-synthetic-west-texas-load-design-project/final_design.png" width="300"> | <img src="energy-system-design-and-scheduling/system_diagram.png" width="500"> |  <img src="electricity-auction-bidding/bid_curve.png" width="300">  |
 |          _Designed a 500 kV corridor for 5 GW load integration in West Texas_           |     _Multi-objective MILP optimization for cost vs. emissions trade-offs_      | _Profit-maximizing bid curves for competitive electricity auctions_ |
@@ -16,11 +16,11 @@ Welcome to my portfolio page for the Master of Science in Energy degree I am com
 - [Energy System Design and Scheduling (ENGY 604)](#energy-system-design-and-scheduling-engy-604)
 - [Texas Synthetic Grid Load Siting Study (ECEN 615)](#texas-synthetic-grid-load-siting-study-ecen-615)
 - [Electricity Auction Bidding Strategy (ENGY 615)](#electricity-auction-bidding-strategy-engy-615)
+- [Data Science for Power Systems (ENGY 643)](#data-science-for-power-systems-engy-643)
+- [Data Science for Process Systems (ENGY 644)](#data-science-for-process-systems-engy-644)
 - [Newton-Raphson Power Flow Solver (ECEN 615)](#newton-raphson-power-flow-solver-ecen-615)
 - [Advanced Concepts in Machine Learning for Energy (ENGY 642)](#advanced-concepts-in-machine-learning-for-energy-engy-642)
 - [Data Science Fundamentals for Energy (ENGY 641)](#data-science-fundamentals-for-energy-engy-641)
-- [Data Science for Power Systems (ENGY 643)](#data-science-for-power-systems-engy-643)
-- [Data Science for Process Systems (ENGY 644)](#data-science-for-process-systems-engy-644)
 
 ---
 
@@ -73,6 +73,32 @@ Designed a profit-maximizing bidding function for a natural gas generator partic
 
 ---
 
+## [Data Science for Power Systems (ENGY 643)](data-science-power-systems/)
+
+Explored grid-focused machine learning use cases, from solar forecasting diagnostics to ancillary service price modeling, with an emphasis on time-series feature engineering.
+
+- Highlights: Measured cross-correlations between irradiance and production, engineered diurnal and seasonal covariates, and trained Random Forest models for RegUp offer classification.
+
+![Solar Correlation](data-science-power-systems/solar.png)
+
+- Key Assets:
+  - [data-science-power-systems/HW_part_3_solar_data_correlation.ipynb](data-science-power-systems/HW_part_3_solar_data_correlation.ipynb)
+  - [data-science-power-systems/HW_Bonus_1_ercot_regup.ipynb](data-science-power-systems/HW_Bonus_1_ercot_regup.ipynb)
+
+---
+
+## [Data Science for Process Systems (ENGY 644)](data-science-process-systems/)
+
+Combined physics-based control design with data-driven modeling for complex energy processes, highlighting hybrid MPC workflows.
+
+- Highlights: Implemented input-output feedback linearization, created hybrid ML-physical models for an SMR case study, and evaluated MPC-driven microgrid scheduling scenarios.
+- Key Assets:
+  - [data-science-process-systems/644_HW_1_solution.pdf](data-science-process-systems/644_HW_1_solution.pdf)
+  - [data-science-process-systems/644_HW_2_solution.pdf](data-science-process-systems/644_HW_2_solution.pdf)
+  - [data-science-process-systems/644_Final_Project_solution.pdf](data-science-process-systems/644_Final_Project_solution.pdf)
+
+---
+
 ## [Newton-Raphson Power Flow Solver (ECEN 615)](newton-raphson-solver/)
 
 Implemented a from-scratch Newton-Raphson AC power flow solver with LU decomposition, automated admittance matrix construction, and detailed convergence diagnostics for instructional case studies.
@@ -112,32 +138,6 @@ Practiced foundational predictive modeling techniques on public datasets, emphas
   - [data-science-fundamentals-for-energy-predictive-modeling/[ICPE 641]\_HW_1_kmeans.ipynb](data-science-fundamentals-for-energy-predictive-modeling/%5BICPE%20641%5D_HW_1_kmeans.ipynb)
   - [data-science-fundamentals-for-energy-predictive-modeling/[ICPE 641]\_HW_2_ridge_regression.ipynb](data-science-fundamentals-for-energy-predictive-modeling/%5BICPE%20641%5D_HW_2_ridge_regression.ipynb)
   - [data-science-fundamentals-for-energy-predictive-modeling/[ICPE_641]\_Final_Project_classifiers.ipynb](data-science-fundamentals-for-energy-predictive-modeling/%5BICPE_641%5D_Final_Project_classifiers.ipynb)
-
----
-
-## [Data Science for Power Systems (ENGY 643)](data-science-power-systems/)
-
-Explored grid-focused machine learning use cases, from solar forecasting diagnostics to ancillary service price modeling, with an emphasis on time-series feature engineering.
-
-- Highlights: Measured cross-correlations between irradiance and production, engineered diurnal and seasonal covariates, and trained Random Forest models for RegUp offer classification.
-
-![Solar Correlation](data-science-power-systems/solar.png)
-
-- Key Assets:
-  - [data-science-power-systems/HW_part_3_solar_data_correlation.ipynb](data-science-power-systems/HW_part_3_solar_data_correlation.ipynb)
-  - [data-science-power-systems/HW_Bonus_1_ercot_regup.ipynb](data-science-power-systems/HW_Bonus_1_ercot_regup.ipynb)
-
----
-
-## [Data Science for Process Systems (ENGY 644)](data-science-process-systems/)
-
-Combined physics-based control design with data-driven modeling for complex energy processes, highlighting hybrid MPC workflows.
-
-- Highlights: Implemented input-output feedback linearization, created hybrid ML-physical models for an SMR case study, and evaluated MPC-driven microgrid scheduling scenarios.
-- Key Assets:
-  - [data-science-process-systems/644_HW_1_solution.pdf](data-science-process-systems/644_HW_1_solution.pdf)
-  - [data-science-process-systems/644_HW_2_solution.pdf](data-science-process-systems/644_HW_2_solution.pdf)
-  - [data-science-process-systems/644_Final_Project_solution.pdf](data-science-process-systems/644_Final_Project_solution.pdf)
 
 ---
 
