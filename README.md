@@ -77,7 +77,7 @@ Designed a profit-maximizing bidding function for a natural gas generator partic
 
 Explored grid-focused machine learning use cases, from solar forecasting diagnostics to ancillary service price modeling, with an emphasis on time-series feature engineering.
 
-- Highlights: Measured cross-correlations between irradiance and production, engineered diurnal and seasonal covariates, and trained Random Forest models for RegUp offer classification.
+- Highlights: Measured cross-correlations between production zones, and trained Random Forest models for RegUp offer classification.
 
 ![Solar Correlation](data-science-power-systems/solar.png)
 
@@ -101,7 +101,7 @@ Combined physics-based control design with data-driven modeling for complex ener
 
 ## [Newton-Raphson Power Flow Solver (ECEN 615)](newton-raphson-solver/)
 
-Implemented a from-scratch Newton-Raphson AC power flow solver with LU decomposition, automated admittance matrix construction, and detailed convergence diagnostics for instructional case studies.
+Implemented a from-scratch Newton-Raphson AC power flow solver with LU decomposition, admittance matrix construction, and detailed convergence diagnostics for instructional case studies.
 
 - Highlights: Programmed block-Jacobian assembly for PV/PQ buses, scripted custom LU factorization routines, and produced iterative mismatch reporting.
 - Key Assets:
