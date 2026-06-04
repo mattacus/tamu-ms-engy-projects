@@ -16,6 +16,7 @@ Welcome to my portfolio page for the Master of Science in Energy degree I am com
 - [Energy System Design and Scheduling (ENGY 604)](#energy-system-design-and-scheduling-engy-604)
 - [Texas Synthetic Grid Load Siting Study (ECEN 615)](#texas-synthetic-grid-load-siting-study-ecen-615)
 - [Electricity Auction Bidding Strategy (ENGY 615)](#electricity-auction-bidding-strategy-engy-615)
+- [Natural Gas Monetization (ENGY 613)](#natural-gas-monetization-engy-613)
 - [Data Science for Power Systems (ENGY 643)](#data-science-for-power-systems-engy-643)
 - [Data Science for Process Systems (ENGY 644)](#data-science-for-process-systems-engy-644)
 - [Newton-Raphson Power Flow Solver (ECEN 615)](#newton-raphson-power-flow-solver-ecen-615)
@@ -70,6 +71,17 @@ Designed a profit-maximizing bidding function for a natural gas generator partic
 - Key Assets:
   - [electricity-auction-bidding/profit-maximizing-bid-function.ipynb](electricity-auction-bidding/profit-maximizing-bid-function.ipynb)
   - [electricity-auction-bidding/report.pdf](electricity-auction-bidding/report.pdf)
+
+---
+
+## [Natural Gas Monetization (ENGY 613)](natural_gas_monetization/)
+
+This is a report I created to showcase different ways that stranded natural gas might be repurposed to be more economically useful. I did a comparison of traditional pipelines, new digital monetization methods, and newer LNG and GTL technologies, as well as a high-level economic analysis to get a rough estimate of what the expected revenue might be for each.
+
+![alt text](natural_gas_monetization/monetization_pathways.png)
+
+- Key Assets:
+  - [natural_gas_monetization/Matt Lee - Term Project Report - Repurposing Stranded Natural Gas.pdf](natural_gas_monetization/Matt%20Lee%20-%20Term%20Project%20Report%20-%20Repurposing%20Stranded%20Natural%20Gas.pdf)
 
 ---
 
